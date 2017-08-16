@@ -3,25 +3,29 @@ namespace Timepad;
 
 class TextGenerator
 {
-    public static $lang, $words, $symbols, $symbols_pronouns, $question_words, $popular_verbs, $male_firstnames, $female_firstnames, $surnames, $vincodes;
+    public static $lang, $words, $symbols, $symbols_pronouns, $question_words, $popular_verbs, $male_firstnames, $female_firstnames, $surnames, $vincodes, $ready = false;
 
     /***
      * Loading words from language files
      * @param string $lang
      */
-    public static function initialize($lang = 'eng')
+    public static function initialize($lang = 'eng', $force = false)
     {
-        $prefix = dirname(__FILE__) . '/';
-        if (!file_exists($prefix . $lang)) $lang = 'eng';
-        self::$lang = $lang;
-        self::$words = explode("\n", file_get_contents($prefix . $lang . '/words.txt'));
-        self::$symbols_pronouns = explode("\n", file_get_contents($prefix . $lang . '/pronouns.txt'));
-        self::$question_words = explode("\n", file_get_contents($prefix . $lang . '/question_words.txt'));
-        self::$popular_verbs = explode("\n", file_get_contents($prefix . $lang . '/popular_verbs.txt'));
-        self::$male_firstnames = explode("\n", file_get_contents($prefix . $lang . '/male_firstnames.txt'));
-        self::$female_firstnames = explode("\n", file_get_contents($prefix . $lang . '/female_firstnames.txt'));
-        self::$surnames = explode("\n", file_get_contents($prefix . $lang . '/surnames.txt'));
-        self::$vincodes = explode("\n", file_get_contents($prefix . $lang . '/vincodes.txt'));
+        if (!self::$ready || $force) {
+            $prefix = dirname(__FILE__) . '/';
+            if (!file_exists($prefix . $lang)) $lang = 'eng';
+            self::$lang = $lang;
+            self::$words = explode("\n", file_get_contents($prefix . $lang . '/words.txt'));
+            self::$symbols_pronouns = explode("\n", file_get_contents($prefix . $lang . '/pronouns.txt'));
+            self::$question_words = explode("\n", file_get_contents($prefix . $lang . '/question_words.txt'));
+            self::$popular_verbs = explode("\n", file_get_contents($prefix . $lang . '/popular_verbs.txt'));
+            self::$male_firstnames = explode("\n", file_get_contents($prefix . $lang . '/male_firstnames.txt'));
+            self::$female_firstnames = explode("\n", file_get_contents($prefix . $lang . '/female_firstnames.txt'));
+            self::$surnames = explode("\n", file_get_contents($prefix . $lang . '/surnames.txt'));
+            self::$vincodes = explode("\n", file_get_contents($prefix . $lang . '/vincodes.txt'));
+            self::$ready = true;
+        }
+
     }
 
     /**
@@ -246,7 +250,7 @@ class TextGenerator
      */
     public static function generateVinCode()
     {
-            return strtoupper(self::$vincodes[rand(0, count(self::$vincodes) - 1)]);
+        return strtoupper(self::$vincodes[rand(0, count(self::$vincodes) - 1)]);
     }
 
     /***
