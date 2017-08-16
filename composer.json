@@ -1,5 +1,6 @@
 {
     "name": "timepad/text-generator",
+    "version": "1.0.0",
     "type": "library",
     "description": "Generate random sentences/headers/passwords/first(last) names/emails",
     "license": "GPL-3.0",
