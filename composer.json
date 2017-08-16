@@ -11,5 +11,10 @@
     ],
     "support": {
         "source": "https://github.com/stemax/TextRandomGenerator"
+    },
+    "autoload": {
+        "classmap": [
+            "TextGenerator.php"
+        ]
     }
 }

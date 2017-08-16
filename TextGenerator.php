@@ -1,5 +1,5 @@
 <?php
-namespace TPHelpers;
+namespace Timepad;
 
 class TextGenerator
 {
