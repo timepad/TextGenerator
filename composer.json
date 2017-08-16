@@ -1,0 +1,14 @@
+{
+    "name": "timepad/text-generator",
+    "type": "library",
+    "description": "Generate random sentences/headers/passwords/first(last) names/emails",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Max Stemplevski"
+        }
+    ],
+    "support": {
+        "source": "https://github.com/stemax/TextRandomGenerator"
+    }
+}
